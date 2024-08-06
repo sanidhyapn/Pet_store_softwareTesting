@@ -1,4 +1,4 @@
-Added setup instructions for Pet Store project
+Setup instructions for Pet Store project
 
 - Flask web application: Run `python app.py` to start the pet store website.
 - Selenium-based automation testing: Run `python test_petstore.py` to execute the test suite.
