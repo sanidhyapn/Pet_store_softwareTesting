@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('description') }}">About Us</a></li>
+            <li><a href="{{ url_for('location') }}">Location</a></li>
+            <li><a href="{{ url_for('customer') }}">Customer Reviews</a></li>
+            <li><a href="{{ url_for('cart_view') }}">Cart</a></li>
+            <li><a href="{{ url_for('checkout') }}">Checkout</a></li>
+            
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

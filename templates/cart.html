@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('index') }}" class="button">Home</a>
+        <a href="{{ url_for('description') }}" class="button">About</a>
+        <a href="{{ url_for('location') }}" class="button">Location</a>
+        <a href="{{ url_for('customer') }}" class="button">Customer Reviews</a>
+
+        <a href="{{ url_for('view_cart') }}" class="button">Cart</a>
+
+
+        {% if session.get('username') %}
+            <a href="{{ url_for('logout') }}" class="button">Logout ({{ session.username }})</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="button">Login</a>
+        {% endif %}
+    </div>
+    <div class="container">
+        <h1>Your Cart</h1>
+        <hr><br>
+        {% if cart %}
+            <ul class="cart-list">
+                {% for item in cart %}
+                    <li>
+                        {{ item.name }} - Rs{{ item.price }}
+                        <a href="{{ url_for('remove_from_cart', product_id=item.id) }}" class="button">Remove</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <br>
+            <a href="{{ url_for('checkout') }}" class="button">Checkout</a>
+        {% else %}
+            <p>Your shopping cart is currently empty.. </p>
+            <br><br>
+        {% endif %}
+        <div class="button-container">
+            <br>
+            <a href="{{ url_for('index') }}" class="button">Back to Home</a>
+            <a href="{{ url_for('index') }}" class="button">Continue Shopping</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('index') }}" class="button">Home</a>
+        <a href="{{ url_for('description') }}" class="button">About</a>
+        <a href="{{ url_for('location') }}" class="button">Location</a>
+        <a href="{{ url_for('customer') }}" class="button">Customer Reviews</a>
+
+        <a href="{{ url_for('view_cart') }}" class="button">Cart</a>
+
+
+        
+        {% if session.get('username') %}
+            <a href="{{ url_for('logout') }}" class="button">Logout ({{ session.username }})</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="button">Login</a>
+        {% endif %}
+    </div>
+    <div class="container">
+        <h1>Welcome to our Pet Store, Happy Shopping!</h1>
+        <hr>
+        <ul>
+            {% for product in products %}
+                <li>
+                    <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}" class="product-image">
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.price }}/-</p>
+                    <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="button">Add to Cart</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

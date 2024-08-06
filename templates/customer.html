@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Reviews</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('index') }}" class="button">Home</a>
+        <a href="{{ url_for('description') }}" class="button">About</a>
+        <a href="{{ url_for('location') }}" class="button">Location</a>
+        <a href="{{ url_for('customer') }}" class="button">Customer Reviews</a>
+        <a href="{{ url_for('view_cart') }}" class="button">Cart</a>
+
+
+        {% if session.get('username') %}
+            <a href="{{ url_for('logout') }}" class="button">Logout ({{ session.username }})</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="button">Login</a>
+        {% endif %}
+    </div>
+    <div class="container">
+        <h1>Customer Reviews</h1>
+        <hr>
+        
+        <ul class="review-list">
+            <li>
+                <strong>Sanidhya PN</strong> -  <em>May 24, 2023</em>
+                <p>I absolutely love this pet store! The variety of products available for my furry friends is fantastic. </p>
+            </li>
+            <li>
+                <strong>John Wick</strong> - <em>Ddec 15, 2023</em>
+                <p>I love the quality of the pet food here. My dog is so much happier and healthier since switching brands.</p>
+            </li>
+            <li>
+                <strong>Sathwik PN</strong>   -    <em>   July 10, 2024</em>
+                <p>This pet store has everything I need for my pets. The customer service is exceptional; they are very knowledgeable and always willing to assist.</p>
+            </li>
+        </ul>
+        
+        <br><br>
+        <a href="{{ url_for('index') }}" class="button">Back to Home</a>
+    </div>
+</body>
+</html>

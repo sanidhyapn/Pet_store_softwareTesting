@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('index') }}" class="button">Home</a>
+        <a href="{{ url_for('description') }}" class="button">About</a>
+        <a href="{{ url_for('location') }}" class="button">Location</a>
+        <a href="{{ url_for('customer') }}" class="button">Customer Reviews</a>
+        <a href="{{ url_for('view_cart') }}" class="button">Cart</a>
+        {% if session.get('username') %}
+            <a href="{{ url_for('logout') }}" class="button">Logout ({{ session.username }})</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="button">Login</a>
+        {% endif %}
+    </div>
+    <div class="container">
+        <h1>Our Location</h1>
+        <hr><br>
+        <h2>Address</h2>
+        <p>123 Shoe Street, Shoe City, 560034</p>
+        <p>Phone: (123) 456-7890</p>
+        <p>Email: info@shoestore.com</p>
+        <br><hr><br>
+        <a href="{{ url_for('index') }}" class="button">Back to Home</a>
+    </div>
+    <!-- Google Maps Script -->
+   
+
+</body>
+</html>
